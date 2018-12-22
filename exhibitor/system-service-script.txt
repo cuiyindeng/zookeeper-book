@@ -1,0 +1,25 @@
+#system V
+
+$ mkdir /opt/zookeeper
+$ ln -s /opt/exhibitor/exhibitor /etc/init.d/exhibitor
+$ chkconfig --add exhibitor
+$ service exhibitor start
+
+#systemctl
+
+$ sudo vi /etc/systemd/system/exhibitor.service
+
+[Unit]
+Description=Exhibitor server
+[Service]
+User=danny
+Group=danny
+Type=forking
+ExecStart=/opt/exhibitor/exhibitor start
+[Install]
+WantedBy=multi-user.target
+
+$ sudo systemctl daemon-reload
+$ systemctl start exhibitor
+$ systemctl status exhibitor
+$ systemctl stop exhibitor
