@@ -1,9 +1,21 @@
 #system V:
 
 $ mkdir /opt/zookeeper
+$ chown -R danny:danny /opt/zookeeper
+$ chmod a+x /opt/exhibitor/exhibitor
 $ ln -s /opt/exhibitor/exhibitor /etc/init.d/exhibitor
 $ chkconfig --add exhibitor
 $ service exhibitor start
+
+
+#遇到的问题：
+#编码：
+#dos2unix exhibitor
+#文件属性：
+#sudo chmod a+x exhibitor 
+#sudo chmod 755 wrapper
+#重启后无法启动：
+#删除exhibitor本地的zookeeper data目录，还有存储exhibitor配置的zookeeper data目录
 
 #systemctl:
 
